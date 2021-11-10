@@ -38,16 +38,16 @@ const getMostCommonGenres = (books, count = {}) => {
   return sortSlice(result)
 };
 
-// return the 5 most common books in object
+// return the 5 most popular books in object
 const getMostPopularBooks = books => sortSlice(books.map(book => ({ name: book.title, count: book.borrows.length })))
 
+// return 5 most popular authors in object
 const getMostPopularAuthors = (books, authors, count = {}) => 
   sortSlice(books.reduce((acc, book, entry) => {
     let author = authors.find(match => match.id === book.authorId).name
     acc[entry] = { name: `${author.first} ${author.last}`, count: book.borrows.length }
     return acc
   }, []))
-// for each book, count author and add number of borrows to total
 
 // map name and count
 // slice
